@@ -29,12 +29,14 @@ func wsEndpoint(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
+		return
 	}
 
 	log.Println("Client Connected")
 	err = ws.WriteMessage(1, []byte("Hi Client!"))
 	if err != nil {
 		log.Println(err)
+		return
 	}
 	// listen indefinitely for new messages coming
 	// through on our WebSocket connection
