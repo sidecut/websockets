@@ -66,7 +66,8 @@ func reader(conn *websocket.Conn) {
 }
 
 func setupRoutes() {
-	http.HandleFunc("/", homePage)
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fs)
 	http.HandleFunc("/ws", wsEndpoint)
 }
 
