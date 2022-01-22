@@ -30,7 +30,10 @@ func wsEndpoint(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
+	// helpful log statement to show connections
+	log.Println("Client Connected")
 
+	reader(ws)
 }
 
 // define a reader which will listen for
