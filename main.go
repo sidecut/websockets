@@ -22,9 +22,15 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func wsEndpoint(w http.ResponseWriter, r *http.Request) {
-	// remove the previous fmt statement
-	// fmt.Fprintf(w, "Hello World")
 	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
+
+	// upgrade this connection to a WebSocket
+	// connection
+	ws, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Println(err)
+	}
+
 }
 
 func setupRoutes() {
