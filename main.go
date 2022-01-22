@@ -22,7 +22,9 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func wsEndpoint(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World")
+	// remove the previous fmt statement
+	// fmt.Fprintf(w, "Hello World")
+	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 }
 
 func setupRoutes() {
