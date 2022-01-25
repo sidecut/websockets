@@ -178,7 +178,7 @@ const homeHTML = `<!DOCTYPE html>
         <script type="text/javascript">
             (function() {
                 var data = document.getElementById("fileData");
-                var conn = new WebSocket("ws://{{.Host}}/ws");
+                var conn = new WebSocket("ws://{{.Host}}/ws?lastMod={{.LastMod}}");
                 conn.onclose = function(evt) {
                     data.textContent = 'Connection closed';
                 }
